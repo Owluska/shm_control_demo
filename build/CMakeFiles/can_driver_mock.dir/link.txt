@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/can_driver_mock.dir/src/can_driver_mock.cpp.o -o can_driver_mock  -lrt 
