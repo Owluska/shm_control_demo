@@ -352,3 +352,22 @@ For a real robot, additional work would be needed:
 * logging and diagnostics
 * ROS2 bridge process
 
+## Demo
+
+After running the processes and collecting `shm_log.csv`, generate plots:
+
+```bash
+python3 scripts/plot_log.py
+```
+
+### Target speed vs vehicle speed
+
+![Target speed vs vehicle speed](docs/images/speed_plot.png)
+
+### Actuator commands
+
+![Actuator commands](docs/images/command_plot.png)
+
+### Shared memory data age
+
+![Shared memory data age](docs/images/age_plot.png)
