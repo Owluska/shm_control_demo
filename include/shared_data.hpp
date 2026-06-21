@@ -4,37 +4,37 @@
 #include <cstdint>
 
 struct ControlTarget {
-    uint64_t timestamp_ns;
-    double target_speed_mps;
-    double target_curvature;
+  uint64_t timestamp_ns;
+  double target_speed_mps;
+  double target_curvature;
 };
 
 struct VehicleState {
-    uint64_t timestamp_ns;
-    double speed_mps;
-    double yaw_rate_radps;
+  uint64_t timestamp_ns;
+  double speed_mps;
+  double yaw_rate_radps;
 };
 
 struct ActuatorCommand {
-    uint64_t timestamp_ns;
-    double throttle;
-    double brake;
-    double steering;
+  uint64_t timestamp_ns;
+  double throttle;
+  double brake;
+  double steering;
 };
 
 template <typename T>
 struct SeqlockSlot {
-    std::atomic<uint64_t> seq;
-    T data;
+  std::atomic<uint64_t> seq;
+  T data;
 };
 
 struct SharedMemoryLayout {
-    uint32_t magic;
-    uint32_t version;
+  uint32_t magic;
+  uint32_t version;
 
-    SeqlockSlot<ControlTarget> target;
-    SeqlockSlot<VehicleState> state;
-    SeqlockSlot<ActuatorCommand> command;
+  SeqlockSlot<ControlTarget> target;
+  SeqlockSlot<VehicleState> state;
+  SeqlockSlot<ActuatorCommand> command;
 };
 
 inline constexpr const char* SHM_NAME = "/shm_control_demo";
