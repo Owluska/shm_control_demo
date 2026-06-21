@@ -15,6 +15,7 @@ int main() {
   int fd = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
   if (fd == -1) {
     std::cerr << "shm_open failed " << std::strerror(errno) << '\n';
+    return -1;
   }
 
   if (ftruncate(fd, shm_size) == -1) {
